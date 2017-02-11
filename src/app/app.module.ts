@@ -1,8 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-//import { HttpModule } from '@angular/http';
-//import { RouterModule }   from '@angular/router';
+import { HttpModule } from '@angular/http';
+import { AppRoutingModule }     from './app-routing.module';
+
+
+import { InMemoryWebApiModule } from './in-memory-web-api.module';
+import { InMemoryDbService }  from './in-memory-backend.service';
+import { InMemoryBackendService  }  from './in-memory-backend.service';
+import { InMemoryDataService }  from './in-memory-data.service';
 
 
 import { AppComponent } from './app.component';
@@ -11,7 +17,7 @@ import { HeroesComponent } from './component/heroes/heroes.component';
 import { DashboardComponent } from './component/dashboard/dashboard.component';
 import { HeroService } from './service/hero.service';
 
-import { AppRoutingModule }     from './app-routing.module';
+
 
 
 @NgModule({
@@ -24,7 +30,8 @@ import { AppRoutingModule }     from './app-routing.module';
   imports: [
     BrowserModule,
     FormsModule,
-    //HttpModule,
+    HttpModule,
+      InMemoryWebApiModule.forRoot(InMemoryDataService),
       AppRoutingModule
 
   ],
